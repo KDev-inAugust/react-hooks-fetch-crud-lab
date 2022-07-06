@@ -17,11 +17,22 @@ function onDeleteClick(deletedQuestion){
   setQuestions(update);
 }
 
+function onUpdateQuestion(updatedQuestion){
+  const updateQuestions = questions.map((index)=>{
+    if (index.id === updatedQuestion.id) {
+      return updatedQuestion
+      }
+      else {return index}
+    }
+  )
+  setQuestions(updateQuestions)
+}
+
   return (
     <section>
       <h1>Quiz Questions</h1>
       <ul>{questions.map((index)=>{
-        return (<QuestionItem question={index} onDeleteItem={onDeleteClick}/>)
+        return (<QuestionItem question={index} onUpdateQuestion={onUpdateQuestion} onDeleteItem={onDeleteClick}/>)
       })}</ul>
     </section>
   );

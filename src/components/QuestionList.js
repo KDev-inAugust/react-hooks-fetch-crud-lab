@@ -12,11 +12,16 @@ function QuestionList() {
 
 },[])
 
+function onDeleteClick(deletedQuestion){
+  const update = questions.filter((index)=>index.id !==deletedQuestion.id);
+  setQuestions(update);
+}
+
   return (
     <section>
       <h1>Quiz Questions</h1>
       <ul>{questions.map((index)=>{
-        return (<QuestionItem question={index} />)
+        return (<QuestionItem question={index} onDeleteItem={onDeleteClick}/>)
       })}</ul>
     </section>
   );
